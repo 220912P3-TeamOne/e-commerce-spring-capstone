@@ -21,21 +21,22 @@ public class ResetPasswordSteps {
                 .until(ExpectedConditions.titleContains("Congo"));
         WebElement signinLink = driver.findElement(By.xpath("//*[@class='sc-jSMfEi ikjYxj'][2]"));
         signinLink.click();
+        new WebDriverWait(driver, 7)
+            .until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//a[contains(text(),'Reset')]"))));
         WebElement resetLink = driver.findElement(By.xpath("//a[contains(text(),'Reset')]"));
         resetLink.click();
-        //new WebDriverWait(driver, 7)
-
     }
 
     @When("the user types in their email address")
     public void the_user_types_in_their_email_address() {
+        //wait
         WebElement emailInput = driver.findElement(By.xpath("//input[@id='email']"));
         emailInput.sendKeys("thisisacongoemail@gmail.com");
     }
 
     @When("the user clicks on reset password link button")
     public void the_user_clicks_on_reset_password_link_button() {
-        WebElement resetPassLink = driver.findElement(By.xpath("//a[contains(text(), 'Reset')]"));
+        WebElement resetPassLink = driver.findElement(By.xpath("//button"));
         resetPassLink.click();
     }
 
