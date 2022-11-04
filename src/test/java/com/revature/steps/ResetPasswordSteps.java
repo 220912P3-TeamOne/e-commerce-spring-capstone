@@ -21,6 +21,8 @@ public class ResetPasswordSteps {
                 .until(ExpectedConditions.titleContains("Congo"));
         WebElement signinLink = driver.findElement(By.xpath("//*[@class='sc-jSMfEi ikjYxj'][2]"));
         signinLink.click();
+        WebElement resetLink = driver.findElement(By.xpath("//a[contains(text(),'Reset')]"));
+        resetLink.click();
         //new WebDriverWait(driver, 7)
 
     }
