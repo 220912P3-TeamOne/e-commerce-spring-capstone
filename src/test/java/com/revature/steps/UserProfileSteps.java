@@ -11,6 +11,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class UserProfileSteps {
 
     public static WebDriver driver = Runner.driver;
@@ -34,7 +36,6 @@ public class UserProfileSteps {
         userpassword.sendKeys("PassPass#1");
         WebElement signinButton = driver.findElement(By.xpath("/html/body/div/main/div/form/button"));
         signinButton.click();
-        //running the test doesn't show this action happening
         new WebDriverWait(driver, 7)
             .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div[1]/div/div[2]/li/strong")));
         WebElement profileLink = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/div[1]/strong"));
@@ -43,10 +44,9 @@ public class UserProfileSteps {
 
     @Then("the user should be on the User Dashboard page")
     public void the_user_should_be_on_the_user_dashboard_page() {
-        //not able to locate this element "//h2"
-        new WebDriverWait(driver, 30)
-            .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[2]/h2/text()[1]")));
-        Assertions.assertEquals("Welcome to your Dashboard,", driver.findElement(By.tagName("/html/body/div/div[2]/h2/text()[1]")).getText());
+        new WebDriverWait(driver, 7)
+            .until(driver -> driver.findElement(By.xpath("//h2")));
+        Assertions.assertEquals("Welcome to Your Dashboard, !", driver.findElement(By.tagName("h2")).getText());
     }
 
     @Given("the user is on the User Dashboard page")
