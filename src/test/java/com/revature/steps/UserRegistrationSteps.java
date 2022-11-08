@@ -25,12 +25,15 @@ public class UserRegistrationSteps {
     }
     @When("a user clicks register")
     public void a_user_clicks_register() {
+        driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/li/strong")).click();
         WebElement register = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/div[1]/strong"));
         register.click();
         }
     @When("a user enters a first name")
     public void a_user_enters_a_first_name() {
+
         WebDriverWait wait = new WebDriverWait(driver, 7);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/main/div/form/div[1]/div[1]/div/div/input")));
         WebElement firstName = driver.findElement(By.xpath("/html/body/div/main/div/form/div[1]/div[1]/div/div/input"));
         firstName.sendKeys("John");
     }
