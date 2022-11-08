@@ -98,8 +98,9 @@ public class UserProfileSteps {
 
     @Then("the user should receive an alert that reads {string}")
     public void the_user_should_receive_an_alert_that_reads(String string) {
-        //wait for alert
-        //dismiss alert
+        new WebDriverWait(driver, 7)
+            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/main/div/form/div[3]")));
+        Assertions.assertNotNull(driver.findElement(By.xpath("/html/body/div/main/div/form/div[3]")));
     }
 
 
