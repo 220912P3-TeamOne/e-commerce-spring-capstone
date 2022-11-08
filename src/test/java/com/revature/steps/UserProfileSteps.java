@@ -74,26 +74,26 @@ public class UserProfileSteps {
 
     @When("the user types in {string} into the First Name Field")
     public void the_user_types_in_into_the_first_name_field(String string) {
-        //find first name field
-        //sendkeys
+        WebElement firstNameInput = driver.findElement(By.xpath("//input[@id='firstName']"));
+        firstNameInput.sendKeys(string);
     }
 
     @When("the user types in {string} into the Last Name Field")
     public void the_user_types_in_into_the_last_name_field(String string) {
-        //find last name field
-        //sendkeys
+        WebElement lastNameInput = driver.findElement(By.xpath("//input[@id='lastName']"));
+        lastNameInput.sendKeys(string);
     }
 
     @When("the user types in {string} into the Password Field")
     public void the_user_types_in_into_the_password_field(String string) {
-        //findpassword
-        //sendkeys
+        WebElement passwordInput = driver.findElement(By.xpath("//input[@id='password']"));
+        passwordInput.sendKeys(string);
     }
 
     @When("the user clicks on the update button")
     public void theUserClicksOnTheUpdateButton() {
-        //findupdateButton
-        //clickupdatebutton
+        WebElement updateButton = driver.findElement(By.xpath("//button"));
+        updateButton.click();
     }
 
     @Then("the user should receive an alert that reads {string}")
