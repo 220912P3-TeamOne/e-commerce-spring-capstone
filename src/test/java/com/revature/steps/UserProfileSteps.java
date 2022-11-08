@@ -28,8 +28,8 @@ public class UserProfileSteps {
 
     @When("the user is on the profile page")
     public void the_user_is_on_the_profile_page() {
-        WebDriverWait wait = new WebDriverWait(driver, 7);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/main/div/form/div[1]/div/input")));
+        new WebDriverWait(driver, 7)
+            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/main/div/form/div[1]/div/input")));
         WebElement username = driver.findElement(By.xpath("/html/body/div/main/div/form/div[1]/div/input"));
         username.sendKeys("thisisacongoemail@gmail.com");
         WebElement userpassword = driver.findElement(By.xpath("/html/body/div/main/div/form/div[2]/div/input"));
@@ -51,11 +51,25 @@ public class UserProfileSteps {
 
     @Given("the user is on the User Dashboard page")
     public void the_user_is_on_the_user_dashboard_page() {
-        //get url
-        //click signin
-        //signin
-        //find profile link
-        //click profile link
+        driver.get("http://localhost:3000/");
+        new WebDriverWait(driver, 7)
+                .until(ExpectedConditions.titleContains("Congo"));
+        WebElement signinLink = driver.findElement(By.xpath("//*[@class='sc-jSMfEi ikjYxj'][2]"));
+        signinLink.click();
+        new WebDriverWait(driver, 7)
+            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/main/div/form/div[1]/div/input")));
+        WebElement username = driver.findElement(By.xpath("/html/body/div/main/div/form/div[1]/div/input"));
+        username.sendKeys("thisisacongoemail@gmail.com");
+        WebElement userpassword = driver.findElement(By.xpath("/html/body/div/main/div/form/div[2]/div/input"));
+        userpassword.sendKeys("PassPass#1");
+        WebElement signinButton = driver.findElement(By.xpath("/html/body/div/main/div/form/button"));
+        signinButton.click();
+        new WebDriverWait(driver, 7)
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div[1]/div/div[2]/li/strong")));
+        WebElement profileLink = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/div[1]/strong"));
+        profileLink.click();
+        new WebDriverWait(driver, 7)
+                .until(driver -> driver.findElement(By.xpath("//h2")));
     }
 
     @When("the user types in {string} into the First Name Field")
