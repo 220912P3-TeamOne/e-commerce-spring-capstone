@@ -26,17 +26,27 @@ public class UserProfileSteps {
 
     @When("the user is on the profile page")
     public void the_user_is_on_the_profile_page() {
+        WebDriverWait wait = new WebDriverWait(driver, 7);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/main/div/form/div[1]/div/input")));
+        WebElement username = driver.findElement(By.xpath("/html/body/div/main/div/form/div[1]/div/input"));
+        username.sendKeys("thisisacongoemail@gmail.com");
+        WebElement userpassword = driver.findElement(By.xpath("/html/body/div/main/div/form/div[2]/div/input"));
+        userpassword.sendKeys("PassPass#1");
+        WebElement signinButton = driver.findElement(By.xpath("/html/body/div/main/div/form/button"));
+        signinButton.click();
+        //having trouble clicking this element
         new WebDriverWait(driver, 7)
-            .until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@class='sc-jSMfEi ikjYxj']"))));
-        WebElement profileLink = driver.findElement(By.xpath("//*[@class='sc-jSMfEi ikjYxj']"));
+            .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/div[1]/strong"))));
+        WebElement profileLink = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/div[1]/strong"));
         profileLink.click();
     }
 
     @Then("the user should be on the User Dashboard page")
     public void the_user_should_be_on_the_user_dashboard_page() {
-        new WebDriverWait(driver, 7)
-                .until(ExpectedConditions.textToBePresentInElement(driver.findElement(By.tagName("h2")), "Dashboard"));//having trouble locating this element
-        Assertions.assertEquals("Welcome to your Dashboard, User!", driver.findElement(By.tagName("h2")).getText());
+        new WebDriverWait(driver, 30)
+            .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2")));
+
+        Assertions.assertEquals("Welcome to your Dashboard,", driver.findElement(By.tagName("//h2")).getText());
     }
 
     @Given("the user is on the User Dashboard page")

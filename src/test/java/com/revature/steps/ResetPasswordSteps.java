@@ -29,7 +29,6 @@ public class ResetPasswordSteps {
 
     @When("the user types in their email address")
     public void the_user_types_in_their_email_address() {
-        //wait
         WebElement emailInput = driver.findElement(By.xpath("//input[@id='email']"));
         emailInput.sendKeys("thisisacongoemail@gmail.com");
     }
