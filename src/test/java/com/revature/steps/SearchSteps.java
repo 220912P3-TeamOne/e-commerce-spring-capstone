@@ -62,7 +62,15 @@ public class SearchSteps {
 
     @Then("no products should be displayed")
     public void no_products_should_be_displayed() {
-
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"root\"]/div[3]")));
+        WebElement product = driver.findElement(By.xpath("//*[@id=\"root\"]/div[3]"));
+        String str = product.getText();
+        Boolean yes = true;
+        if(str.contains("$")){
+            yes = false;
+        }
+        Assertions.assertTrue(yes);
     }
 
 }
