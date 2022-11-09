@@ -16,17 +16,7 @@ import static org.junit.Assert.assertEquals;
 
 public class UserCartActionsSteps {
     ChromeDriver driver = Runner.driver;
-    @Given("The user has logged in")
-    public void the_user_has_logged_in() {
-        // Write code here that turns the phrase above into concrete actions
-        driver.get("http://localhost:3000/login");
-        WebElement username = driver.findElement(By.xpath("/html/body/div/main/div/form/div[1]/div/input"));
-        username.sendKeys("team1@testing.com");
-        WebElement password = driver.findElement(By.xpath("/html/body/div/main/div/form/div[2]/div/input"));
-        password.sendKeys("team1");
-        WebElement signInButton = driver.findElement(By.xpath("/html/body/div/main/div/form/button"));
-        signInButton.click();
-    }
+
     @Then("User should see available products on Homepage and sees logout button")
     public void user_should_see_available_products_on_homepage_and_sees_logout_button() {
         // Write code here that turns the phrase above into concrete actions
