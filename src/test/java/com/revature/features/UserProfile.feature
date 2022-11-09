@@ -15,7 +15,7 @@ Feature: User Profile
   Scenario: A user can modify their credit card information
     Given the user is on the User Dashboard page
     When the user types "4037720970713675" into the Card Number Field
-    When the user types "11252025" into the Date Field
+    When the user types "11" "25" "2025" into the Date Field
     When the user types "123" into the CVV field
     When the user clicks on the Add Payment Button
     Then the user should receive the alert that reads "You've successfully added your payment method!"

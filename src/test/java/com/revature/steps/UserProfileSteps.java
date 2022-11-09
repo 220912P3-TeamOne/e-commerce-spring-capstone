@@ -104,40 +104,42 @@ public class UserProfileSteps {
     public void the_user_should_receive_an_alert_that_reads(String string) {
         new WebDriverWait(driver, 7)
             .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/main[2]/div/form/div/div[4]/div[1]/div/div/div[2]")));
-        Assertions.assertNotNull(driver.findElement(By.xpath("/html/body/div/main[2]/div/form/div/div[4]/div[1]/div/div/div[2]")));
+        Assertions.assertNotNull(driver.findElement(By.xpath("/html/body/div/main[2]/div/form/div/div[4]/div[1]/div/div/div[2]")).getText());
     }
 
 
     @When("the user types {string} into the Card Number Field")
     public void theUserTypesIntoTheCardNumberField(String arg0) {
-        WebElement cardNumberInput = driver.findElement(By.xpath(""));
+        WebElement passwordInput = driver.findElement(By.xpath("//input[@id='password']"));
+        passwordInput.sendKeys("PassPass#1");
+        WebElement cardNumberInput = driver.findElement(By.xpath("//input[@id='cardNumber']"));
         cardNumberInput.sendKeys(arg0);
-    }
-
-    @When("the user types {string} into the Date Field")
-    public void theUserTypesIntoTheDateField(String arg0) {
-        WebElement dateInput = driver.findElement(By.xpath(""));
-        dateInput.sendKeys(arg0);
     }
 
     @When("the user types {string} into the CVV field")
     public void theUserTypesIntoTheCVVField(String arg0) {
-        WebElement CVVInput = driver.findElement(By.xpath(""));
-        CVVInput.sendKeys(arg0);
+        WebElement cVVInput = driver.findElement(By.xpath("//input[@id='ccv']"));
+        cVVInput.sendKeys(arg0);
     }
 
     @When("the user clicks on the Add Payment Button")
     public void theUserClicksOnTheAddPaymentButton() {
-        WebElement addPaymentButton = driver.findElement(By.xpath(""));
+        WebElement addPaymentButton = driver.findElement(By.xpath("/html/body/div/main[1]/div/form/div/div[3]/div[2]/button"));
         addPaymentButton.click();
     }
 
     @Then("the user should receive the alert that reads {string}")
     public void theUserShouldReceiveTheAlertThatReads(String arg0) {
-        //wait for alert
-        //assert
         new WebDriverWait(driver, 7)
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("")));
-        Assertions.assertEquals(arg0 ,driver.findElement(By.xpath("")).getText());
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/main[2]/div/form/div/div[4]/div[1]/div/div/div[2]")));
+        Assertions.assertNotNull(driver.findElement(By.xpath("/html/body/div/main[2]/div/form/div/div[4]/div[1]/div/div/div[2]")).getText());
+    }
+
+    @When("the user types {string} {string} {string} into the Date Field")
+    public void theUserTypesIntoTheDateField(String arg0, String arg1, String arg2) {
+        WebElement dateInput = driver.findElement(By.xpath("//input[@id='expDate']"));
+        dateInput.sendKeys(arg0);
+        dateInput.sendKeys(arg1);
+        dateInput.sendKeys(arg2);
     }
 }
