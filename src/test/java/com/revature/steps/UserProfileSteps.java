@@ -20,6 +20,8 @@ public class UserProfileSteps {
     @Given("the user is signed in")
     public void the_user_is_signed_in() {
         driver.get("http://localhost:3000/");
+        WebElement logoutLink = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/li/strong"));
+        logoutLink.click();
         new WebDriverWait(driver, 7)
                 .until(ExpectedConditions.titleContains("Congo"));
         WebElement signinLink = driver.findElement(By.xpath("//*[@class='sc-jSMfEi ikjYxj'][2]"));
@@ -54,6 +56,8 @@ public class UserProfileSteps {
         driver.get("http://localhost:3000/");
         new WebDriverWait(driver, 7)
                 .until(ExpectedConditions.titleContains("Congo"));
+        WebElement logoutLink = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/li/strong"));
+        logoutLink.click();
         WebElement signinLink = driver.findElement(By.xpath("//*[@class='sc-jSMfEi ikjYxj'][2]"));
         signinLink.click();
         new WebDriverWait(driver, 7)
@@ -99,8 +103,8 @@ public class UserProfileSteps {
     @Then("the user should receive an alert that reads {string}")
     public void the_user_should_receive_an_alert_that_reads(String string) {
         new WebDriverWait(driver, 7)
-            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/main/div/form/div[3]")));
-        Assertions.assertNotNull(driver.findElement(By.xpath("/html/body/div/main/div/form/div[3]")));
+            .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/main[2]/div/form/div/div[4]/div[1]/div/div/div[2]")));
+        Assertions.assertNotNull(driver.findElement(By.xpath("/html/body/div/main[2]/div/form/div/div[4]/div[1]/div/div/div[2]")));
     }
 
 
