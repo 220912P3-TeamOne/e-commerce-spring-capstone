@@ -20,6 +20,22 @@ public class ProductReviewsSteps {
     @Given("The User is on the home page")
     public void the_user_is_on_the_home_page() {
         // Write code here that turns the phrase above into concrete actions
+        WebDriverWait wait = new WebDriverWait(driver,(7));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div[1]/div/div[2]/div[2]/strong")));
+        WebElement signIn = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/div[2]/strong"));
+        signIn.click();
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/main/div/form/div[1]/div/input")));
+        WebElement username = driver.findElement(By.xpath("/html/body/div/main/div/form/div[1]/div/input"));
+        username.sendKeys("team1@testing.com");
+
+        WebElement password = driver.findElement(By.xpath("/html/body/div/main/div/form/div[2]/div/input"));
+        password.sendKeys("team1");
+
+        WebElement signInButton = driver.findElement(By.xpath("/html/body/div/main/div/form/button"));
+        signInButton.click();
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div[1]/div/div[2]/li/strong")));
 
         driver.get("http://localhost:3000/");
 
@@ -50,6 +66,7 @@ public class ProductReviewsSteps {
     @Then("The User should be on the Product Reviews page")
     public void the_user_should_be_on_the_product_reviews_page() {
         // Write code here that turns the phrase above into concrete actions
+
         WebElement leaveAReview = driver.findElement(By.xpath
                 ("/html/body/div[2]/div[3]/div/div[5]/h4"));
         Assertions.assertNotNull(leaveAReview);
@@ -89,7 +106,8 @@ public class ProductReviewsSteps {
     @Then("A Reviews Card should be displayed with the name,rating and comment")
     public void a_reviews_card_should_be_displayed_with_the_name_rating_and_comment() {
         // Write code here that turns the phrase above into concrete actions
-
+        WebDriverWait wait = new WebDriverWait(driver,7);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[6]/div/div/div[1]/div")));
         Assert.assertTrue(driver.findElement(
                 By.xpath("/html/body/div[2]/div[3]/div/div[6]/div/div/div[1]/div")).isDisplayed());
 

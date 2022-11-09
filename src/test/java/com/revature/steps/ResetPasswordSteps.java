@@ -17,13 +17,17 @@ public class ResetPasswordSteps {
     @Given("the user is on the reset password page")
     public void the_user_is_on_the_reset_password_page() {
         driver.get("http://localhost:3000/");
+        //All the titles are the same???
         new WebDriverWait(driver, 7)
                 .until(ExpectedConditions.titleContains("Congo"));
-        WebElement signinLink = driver.findElement(By.xpath("//*[@class='sc-jSMfEi ikjYxj'][2]"));
+        WebElement logout = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/li/strong"));
+        Assertions.assertNotNull(logout);
+        logout.click();
+        WebElement signinLink = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/div[2]/strong"));
         signinLink.click();
         new WebDriverWait(driver, 7)
-            .until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//a[contains(text(),'Reset')]"))));
-        WebElement resetLink = driver.findElement(By.xpath("//a[contains(text(),'Reset')]"));
+            .until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html/body/div/main/div/form/div[3]/div[2]/a"))));
+        WebElement resetLink = driver.findElement(By.xpath("/html/body/div/main/div/form/div[3]/div[2]/a"));
         resetLink.click();
     }
 
@@ -35,7 +39,7 @@ public class ResetPasswordSteps {
 
     @When("the user clicks on reset password link button")
     public void the_user_clicks_on_reset_password_link_button() {
-        WebElement resetPassLink = driver.findElement(By.xpath("//button"));
+        WebElement resetPassLink = driver.findElement(By.xpath("/html/body/div/main/div/form/button"));
         resetPassLink.click();
     }
 
