@@ -110,31 +110,34 @@ public class UserProfileSteps {
 
     @When("the user types {string} into the Card Number Field")
     public void theUserTypesIntoTheCardNumberField(String arg0) {
-        //find cardNumberInput
-        //sendkeys
+        WebElement cardNumberInput = driver.findElement(By.xpath(""));
+        cardNumberInput.sendKeys(arg0);
     }
 
     @When("the user types {string} into the Date Field")
     public void theUserTypesIntoTheDateField(String arg0) {
-        //find dateInput
-        //sendkeys
+        WebElement dateInput = driver.findElement(By.xpath(""));
+        dateInput.sendKeys(arg0);
     }
 
     @When("the user types {string} into the CVV field")
     public void theUserTypesIntoTheCVVField(String arg0) {
-        //find CVVInput
-        //input CVV
+        WebElement CVVInput = driver.findElement(By.xpath(""));
+        CVVInput.sendKeys(arg0);
     }
 
     @When("the user clicks on the Add Payment Button")
     public void theUserClicksOnTheAddPaymentButton() {
-        //find addPaymentButton
-        //click addPaymentButton
+        WebElement addPaymentButton = driver.findElement(By.xpath(""));
+        addPaymentButton.click();
     }
 
     @Then("the user should receive the alert that reads {string}")
     public void theUserShouldReceiveTheAlertThatReads(String arg0) {
         //wait for alert
         //assert
+        new WebDriverWait(driver, 7)
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("")));
+        Assertions.assertEquals(arg0 ,driver.findElement(By.xpath("")).getText());
     }
 }
