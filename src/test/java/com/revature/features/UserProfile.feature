@@ -11,3 +11,11 @@ Feature: User Profile
       When the user types in "PassPass#1" into the Password Field
       When the user clicks on the update button
       Then the user should receive an alert that reads "You've successfully updated your profile!"
+
+  Scenario: A user can modify their credit card information
+    Given the user is on the User Dashboard page
+    When the user types "4037720970713675" into the Card Number Field
+    When the user types "11252025" into the Date Field
+    When the user types "123" into the CVV field
+    When the user clicks on the Add Payment Button
+    Then the user should receive the alert that reads "You've successfully added your payment method!"

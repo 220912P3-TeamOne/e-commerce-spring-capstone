@@ -108,4 +108,33 @@ public class UserProfileSteps {
     }
 
 
+    @When("the user types {string} into the Card Number Field")
+    public void theUserTypesIntoTheCardNumberField(String arg0) {
+        //find cardNumberInput
+        //sendkeys
+    }
+
+    @When("the user types {string} into the Date Field")
+    public void theUserTypesIntoTheDateField(String arg0) {
+        //find dateInput
+        //sendkeys
+    }
+
+    @When("the user types {string} into the CVV field")
+    public void theUserTypesIntoTheCVVField(String arg0) {
+        //find CVVInput
+        //input CVV
+    }
+
+    @When("the user clicks on the Add Payment Button")
+    public void theUserClicksOnTheAddPaymentButton() {
+        //find addPaymentButton
+        //click addPaymentButton
+    }
+
+    @Then("the user should receive the alert that reads {string}")
+    public void theUserShouldReceiveTheAlertThatReads(String arg0) {
+        //wait for alert
+        //assert
+    }
 }
