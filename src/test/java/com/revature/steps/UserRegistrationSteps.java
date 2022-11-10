@@ -16,7 +16,8 @@ import java.util.Random;
 public class UserRegistrationSteps {
 
     ChromeDriver driver = Runner.driver;
-
+    public static String iemailid;
+    public static String ipassword;
     @Given("a user is on the home page")
     public void a_user_is_on_the_home_page() {
         driver.navigate().to("http://localhost:3000/");
@@ -59,12 +60,13 @@ public class UserRegistrationSteps {
         int randInt = r.nextInt(12000-5000) + 5000;
         emailString += ""+randInt;
         email.sendKeys((emailString+"@FakeMail.com"));
-
+        iemailid=emailString+"@FakeMail.com";
     }
     @When("a user enters a password")
     public void a_user_enters_a_password() {
         WebElement password = driver.findElement(By.xpath("/html/body/div/main/div/form/div[1]/div[4]/div/div/input"));
         password.sendKeys("Password1!");
+        ipassword="Password1!";
     }
     @When("a user clicks sign up")
     public void a_user_clicks_sign_up() {
