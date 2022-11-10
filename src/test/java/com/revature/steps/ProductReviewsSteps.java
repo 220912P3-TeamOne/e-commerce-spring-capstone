@@ -47,7 +47,7 @@ public class ProductReviewsSteps {
         driver.navigate().to("http://localhost:3000/");
         WebDriverWait wait = new WebDriverWait(driver, 8);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div[3]/div[3]/div")));
-        WebElement productCard  = driver.findElement(By.xpath("/html/body/div/div[3]/div[last()]/div"));
+        WebElement productCard  = driver.findElement(By.xpath("/html/body/div/div[3]/div[1]/div"));
 
         Actions hover = new Actions(driver);
         hover.moveToElement(productCard).perform();
@@ -58,7 +58,7 @@ public class ProductReviewsSteps {
         // Write code here that turns the phrase above into concrete actions
 
         WebElement viewBox = driver.findElement(By.xpath
-                ("/html/body/div/div[3]/div[last()]/div/div[1]/div[2]/div"));
+                ("/html/body/div/div[3]/div[1]/div/div[1]/div[2]/div"));
 
         Actions hover = new Actions(driver);
         hover.moveToElement(viewBox);
@@ -69,6 +69,8 @@ public class ProductReviewsSteps {
     public void the_user_should_be_on_the_product_reviews_page() {
         // Write code here that turns the phrase above into concrete actions
 
+        WebDriverWait wait=new WebDriverWait(driver,8);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[5]/h4")));
         WebElement leaveAReview = driver.findElement(By.xpath
                 ("/html/body/div[2]/div[3]/div/div[5]/h4"));
         Assertions.assertNotNull(leaveAReview);

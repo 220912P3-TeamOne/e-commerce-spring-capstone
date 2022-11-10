@@ -6,12 +6,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class UserProfileSteps {
 
@@ -48,7 +50,8 @@ public class UserProfileSteps {
     public void the_user_should_be_on_the_user_dashboard_page() {
         new WebDriverWait(driver, 7)
             .until(driver -> driver.findElement(By.xpath("//h2")));
-        Assertions.assertEquals("Welcome to Your Dashboard, !", driver.findElement(By.tagName("h2")).getText());
+        String message=driver.findElement(By.tagName("h2")).getText();
+        Assertions.assertTrue(message.contains("Welcome to Your Dashboard"));
     }
 
     @Given("the user is on the User Dashboard page")
@@ -79,13 +82,13 @@ public class UserProfileSteps {
     @When("the user types in {string} into the First Name Field")
     public void the_user_types_in_into_the_first_name_field(String string) {
         WebElement firstNameInput = driver.findElement(By.xpath("//input[@id='firstName']"));
-        firstNameInput.sendKeys(string);
+        firstNameInput.sendKeys(Keys.chord(Keys.CONTROL, "a"), string);
     }
 
     @When("the user types in {string} into the Last Name Field")
     public void the_user_types_in_into_the_last_name_field(String string) {
         WebElement lastNameInput = driver.findElement(By.xpath("//input[@id='lastName']"));
-        lastNameInput.sendKeys(string);
+        lastNameInput.sendKeys(Keys.chord(Keys.CONTROL, "a"), string);
     }
 
     @When("the user types in {string} into the Password Field")
@@ -102,7 +105,7 @@ public class UserProfileSteps {
 
     @Then("the user should receive an alert that reads {string}")
     public void the_user_should_receive_an_alert_that_reads(String string) {
-        new WebDriverWait(driver, 7)
+        new WebDriverWait(driver, 9)
             .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/main[2]/div/form/div/div[4]/div[1]/div/div/div[2]")));
         Assertions.assertNotNull(driver.findElement(By.xpath("/html/body/div/main[2]/div/form/div/div[4]/div[1]/div/div/div[2]")).getText());
     }
