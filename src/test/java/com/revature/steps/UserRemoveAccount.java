@@ -25,15 +25,17 @@ public class UserRemoveAccount {
         password.sendKeys(UserRegistrationSteps.ipassword);
         WebElement signInButton = driver.findElement(By.xpath("/html/body/div/main/div/form/button"));
         signInButton.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div[1]/div/div[2]/div[1]")));
-        WebElement profilepage=driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/div[1]"));
-        profilepage.click();
+
     }
 
     @Then("User enters {string}")
     public void user_enters(String string) {
         // Write code here that turns the phrase above into concrete actions
         WebDriverWait wait=new WebDriverWait(driver,8);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div[1]/div/div[2]/div[1]")));
+        WebElement profilepage=driver.findElement(By.xpath("/html/body/div/div[1]/div/div[2]/div[1]"));
+        profilepage.click();
+
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div[3]/div/div/div[1]/div/input")));
         WebElement input=driver.findElement(By.xpath("/html/body/div/div[3]/div/div/div[1]/div/input"));
         input.sendKeys(string);
